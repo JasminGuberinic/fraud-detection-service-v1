@@ -1,0 +1,39 @@
+# Get alert by ID
+curl -X GET "http://localhost:8083/api/alerts/ALERT-123"
+
+# Get alerts by account ID
+curl -X GET "http://localhost:8083/api/alerts/account/ACC-456"
+
+# Get alerts by time range
+curl -X GET "http://localhost:8083/api/alerts/search?startTime=2024-02-13T00:00:00&endTime=2024-02-13T23:59:59"
+
+# Get all alerts with pagination
+curl -X GET "http://localhost:8083/api/alerts?page=0&size=10"
+
+# Search alerts with complex query
+curl -X GET "http://localhost:8083/api/alerts/search/complex" \
+-H "Content-Type: application/json" \
+-d '{
+    "searchText": "suspicious",
+    "minAmount": 1000.0,
+    "startTime": "2024-02-13T00:00:00",
+    "endTime": "2024-02-13T23:59:59",
+    "page": 0,
+    "size": 10
+}'
+
+curl -X POST "http://localhost:8081/api/transactions/multiple/ACC-123/5?delayMs=500"
+
+curl -X DELETE "localhost:9200/fraud-alerts"
+
+    //# Slanje pojedinačne transakcije
+    //curl -X POST http://localhost:8081/api/transactions/send \
+    //-H "Content-Type: application/json" \
+    //-d '{
+    //"id": "TRX-123",
+    //"accountId": "ACC-456",
+    //"amount": 1000.0,
+    //"timestamp": "2024-02-11 12:00:00",
+    //"merchantId": "MERCH-789",
+    //"location": "New York"
+    //}'
