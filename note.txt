@@ -37,3 +37,5 @@ curl -X DELETE "localhost:9200/fraud-alerts"
     //"merchantId": "MERCH-789",
     //"location": "New York"
     //}'
+
+    grpcurl -plaintext -d '{"id": "123", "amount": 100.0, "timestamp": "2023-01-01T10:00:00Z", "merchantId": "M123", "customerId": "C456", "type": "PURCHASE"}' localhost:9090 TransactionService/SendTransaction

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.solution.fraud_detection.producer.grpc";
+
+package com.solution.fraud_detection;
+
+// Transaction message definition
+message TransactionProto {
+    string id = 1;
+    string account_id = 2;
+    double amount = 3;
+    string timestamp = 4;
+    string merchant_id = 5;
+    string location = 6;
+}
+
+// Response message
+message TransactionResponse {
+    string message = 1;
+    bool success = 2;
+}
+
+// Service definition
+service TransactionService {
+    rpc SendTransaction (TransactionProto) returns (TransactionResponse);
+}
